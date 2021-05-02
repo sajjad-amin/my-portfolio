@@ -1,0 +1,49 @@
+body{
+    /*background-color: #09182e !important;*/
+    background-color: #190124 !important;
+    /*color: #e5f0fe;*/
+    color: #cfd0d7;
+    font-family: 'Roboto', sans-serif;
+}
+@media (min-width: 768px) {
+    .overlap-left{
+        margin-left: -60px;
+    }
+}
+.color-a{
+    /*color: #12ffdb;*/
+    color: #e38d8d;
+}
+.bg-a{
+    /*background-color: #162944;*/
+    background-color: #30003c;
+
+}
+.article-card{
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.article-card:hover{
+    transform: scale(1.05);
+}
+.btn-a{
+    background-color: #e38d8d !important;
+    border-color: #e38d8d !important;
+}
+.btn-a:hover{
+    background-color: #a94a4a !important;
+    border-color: #e38d8d !important;
+}
+.btn-b{
+    border-color: #e38d8d !important;
+    color: #e38d8d !important;
+}
+.btn-b:hover{
+    background-color: #a94a4a !important;
+    color: #fff !important;
+}
+input, textarea{
+    background-color: #30003c !important;
+    border-color: #e38d8d !important;
+    color: #fff !important;
+}
