@@ -31,7 +31,7 @@ const About = () => {
                         <a className="color-a" href="https://www.linkedin.com/in/sajjadaminsayem/" target="_blank">
                             <FontAwesomeIcon icon={faLinkedin}/>
                         </a>
-                        <a className="color-a" href="https://github.com/sajjad-amin/">
+                        <a className="color-a" href="https://github.com/sajjad-amin/" target="_blank">
                             <FontAwesomeIcon icon={faGithub}/>
                         </a>
                     </div>

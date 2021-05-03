@@ -1,11 +1,46 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Contact = () => {
+    const [isOk, setIsOk] = useState(null);
+    const removeMessage = () => {
+        let iID = setInterval(()=>{
+            setIsOk(null)
+            clearInterval(iID)
+        },5000)
+    }
     const handleSubmit = event => {
         event.preventDefault();
-        const name = event.target[0].value;
+        const name = event.target[0].value
         const email = event.target[1].value;
         const message = event.target[2].value;
+        const clearForm = () => {
+            event.target[0].value = ''
+            event.target[1].value = ''
+            event.target[2].value = ''
+        }
+        if (name && email && message){
+            const emailBody = JSON.stringify({
+                email,
+                name,
+                message
+            })
+            fetch('https://sajjadamin.com/email.php',{
+                method: 'POST',
+                body: emailBody
+            }).then(r=>r.json())
+                .then(r=>{
+                    if(r.success === true){
+                        setIsOk(true)
+                        removeMessage()
+                        clearForm()
+                    } else {
+                        removeMessage()
+                    }
+                })
+        } else {
+            setIsOk(false)
+            removeMessage()
+        }
     }
     return (
         <div className="mt-5 d-flex align-items-center justify-content-center">
@@ -30,7 +65,19 @@ const Contact = () => {
                             </div>
                         </form>
                     </div>
-                    <div className="card-footer pt-3 text-muted">
+                    <div className="card-footer text-center">
+                        {
+                            isOk != null && isOk === false &&
+                            <div className="alert alert-danger" role="alert">
+                                Please fill out the form.
+                            </div>
+                        }
+                        {
+                            isOk != null && isOk === true &&
+                            <div className="alert alert-success" role="alert">
+                                Thank you for your email. I will reply you as soon as possible.
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark p-lg-4">
+        <nav className="navbar navbar-expand-sm navbar-dark pe-lg-4 mb-5">
           <div className="container-fluid">
             <button className="navbar-toggler ms-auto"
                     type="button" data-bs-toggle="collapse"

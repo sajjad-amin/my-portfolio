@@ -5,8 +5,8 @@ import {faExternalLinkAlt} from "@fortawesome/free-solid-svg-icons";
 
 const ProjectCard = ({image, title, description, technologies, githubLink, liveLink}) => {
     return (
-        <div className="col-md-4 mb-4 article-card">
-            <div className="card bg-a">
+        <div className="mb-4">
+            <div className="card bg-a article-card">
                 <img src={image} className="card-img-top" alt={title}/>
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>

@@ -7,7 +7,7 @@ const Projects = () => {
         <div className="container">
             <h1 className="color-a">My Projects</h1>
             <hr/>
-            <section className="row row-cols-3 mt-5 mb-5">
+            <section className="row row-cols-lg-3 mt-5 mb-5">
                 {
                     ProjectData.map(data=>(
                         <ProjectCard

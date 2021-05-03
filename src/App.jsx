@@ -11,10 +11,16 @@ import Contact from "./Components/Contact/Contact";
 import Blog from "./Components/Blog/Blog";
 import NotFound from "./Components/404/NotFound";
 import Footer from "./Components/Footer/Footer";
+import Particles from "react-particles-js";
+import ParticleConfig from "./Data/ParticleConfig";
 
 function App() {
   return (
     <BrowserRouter>
+        <Particles
+            className="background"
+            params={ParticleConfig}
+        />
         <Header/>
         <Switch>
             <Route exact path="/">
