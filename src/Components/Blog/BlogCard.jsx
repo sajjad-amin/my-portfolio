@@ -3,8 +3,8 @@ import {Fade} from "react-reveal";
 
 const BlogCard = ({link, image, title, description, tags, date}) => {
     return (
-        <div className="col-md-4 mb-4 article-card">
-            <Fade bottom>
+        <Fade bottom>
+            <div className="col-md-4 mb-4 article-card">
                 <div className="card bg-a">
                     <img src={image} className="card-img-top" alt={title}/>
                     <div className="card-body">
@@ -22,8 +22,8 @@ const BlogCard = ({link, image, title, description, tags, date}) => {
                         <p>{date}</p>
                     </div>
                 </div>
-            </Fade>
-        </div>
+            </div>
+        </Fade>
     );
 };
 
