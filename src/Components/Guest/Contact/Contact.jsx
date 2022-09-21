@@ -66,6 +66,10 @@ const Contact = () => {
                                     <button type="submit" className="btn btn-b btn-outline-success">Send</button>
                                 </div>
                             </form>
+                            <h5 className="text-center color-a m-3">OR</h5>
+                            <div className="d-grid gap-2 col-6 mx-auto">
+                                <a type="button" className="btn btn-b btn-outline-success" href="https://meet.sajjadamin.com" target="_blank">Join Live Meeting</a>
+                            </div>
                         </div>
                         <div className="card-footer text-center">
                             {

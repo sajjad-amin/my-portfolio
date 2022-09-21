@@ -1,5 +1,5 @@
 import React from 'react';
-import BlogData from "../../Data/BlogData";
+import BlogData from "../../../Data/BlogData";
 import BlogCard from "./BlogCard";
 
 const Blog = () => {

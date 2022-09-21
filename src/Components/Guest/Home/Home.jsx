@@ -1,8 +1,8 @@
 import React from 'react';
-import ProfilePicture from '../../Assets/Images/profile.jpg'
-import ProjectData from "../../Data/ProjectData";
+import ProfilePicture from '../../../Assets/Images/profile.jpg'
+import ProjectData from "../../../Data/ProjectData";
 import HomeProjectCard from "./HomeProjectCard";
-import BlogData from "../../Data/BlogData";
+import BlogData from "../../../Data/BlogData";
 import BlogCard from "../Blog/BlogCard";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -43,10 +43,10 @@ const Home = () => {
                               <a className="color-a" href="https://facebook.com/sajjad.amin.100" target="_blank">
                                   <FontAwesomeIcon icon={faFacebook}/>
                               </a>
-                              <a className="color-a" href="https://www.linkedin.com/in/sajjadaminsayem/" target="_blank">
+                              <a className="color-a" href="src/Components/Guest/Home/Home" target="_blank">
                                   <FontAwesomeIcon icon={faLinkedin}/>
                               </a>
-                              <a className="color-a" href="https://github.com/sajjad-amin/" target="_blank">
+                              <a className="color-a" href="src/Components/Guest/Home/Home" target="_blank">
                                   <FontAwesomeIcon icon={faGithub}/>
                               </a>
                           </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfilePicture from "../../Assets/Images/profile.jpg";
+import ProfilePicture from "../../../Assets/Images/profile.jpg";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDownload, faEnvelope, faMapMarkerAlt, faPhoneAlt} from "@fortawesome/free-solid-svg-icons";
 import {faFacebook, faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
@@ -30,10 +30,10 @@ const About = () => {
                             <a className="color-a" href="https://facebook.com/sajjad.amin.100" target="_blank">
                                 <FontAwesomeIcon icon={faFacebook}/>
                             </a>
-                            <a className="color-a" href="https://www.linkedin.com/in/sajjadaminsayem/" target="_blank">
+                            <a className="color-a" href="src/Components/Guest/About/About" target="_blank">
                                 <FontAwesomeIcon icon={faLinkedin}/>
                             </a>
-                            <a className="color-a" href="https://github.com/sajjad-amin/" target="_blank">
+                            <a className="color-a" href="src/Components/Guest/About/About" target="_blank">
                                 <FontAwesomeIcon icon={faGithub}/>
                             </a>
                         </div>
@@ -111,11 +111,11 @@ const About = () => {
                                 </p>
                                 <p>
                                     <FontAwesomeIcon className="me-3" icon={faLinkedin}/>
-                                    <a className="text-white" href="https://www.linkedin.com/in/sajjadaminsayem/" target="_blank">LinkedIn</a>
+                                    <a className="text-white" href="src/Components/Guest/About/About" target="_blank">LinkedIn</a>
                                 </p>
                                 <p>
                                     <FontAwesomeIcon className="me-3" icon={faGithub}/>
-                                    <a className="text-white" href="https://github.com/sajjad-amin/">GitHub</a>
+                                    <a className="text-white" href="src/Components/Guest/About/About">GitHub</a>
                                 </p>
                             </div>
                         </section>
