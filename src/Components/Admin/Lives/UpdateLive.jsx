@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
-import {useParams, useRouteMatch, Redirect} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {random} from "../../../Helper/helper";
-import profile from "../../../Assets/Images/profile.jpg";
 import {UserContext} from "../../../App";
 import {useHistory} from "react-router-dom/cjs/react-router-dom";
 
@@ -10,19 +9,23 @@ const UpdateLive = () => {
     const history = useHistory();
     const {id} = useParams();
     const [data, setData] = useState({});
+    const [enabled, setEnabled] = useState(0);
+    const displayRef = useRef(null);
     const imageRef = useRef(null);
     const keyRef = useRef(null);
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
-    let enable = 0;
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_BASE_URL}/live/${id}`).then(r=>r.json()).then(d=> {
             setData(d[0]);
-            enable = Number.parseInt(data.show);
+            setEnabled(Number.parseInt(d[0].show));
         });
     },[]);
-    const setEnable = event => {
-        enable = Number.parseInt(event.target.value);
+    const handleEnable = event => {
+        setEnabled(Number.parseInt(event.target.value));
+    }
+    const handleSelect = event => {
+        displayRef.current.src = URL.createObjectURL(event.target.files[0]);
     }
     const handleKey = () => {
         keyRef.current.value = random(32);
@@ -42,7 +45,7 @@ const UpdateLive = () => {
             }
             requestBody.append('imagePath', data.image);
             requestBody.append('key', key);
-            requestBody.append('show', enable);
+            requestBody.append('show', enabled);
             fetch(process.env.REACT_APP_BASE_URL+'/live/update',{
                 method: 'POST',
                 headers: {
@@ -57,7 +60,17 @@ const UpdateLive = () => {
         }
     }
     const handleDelete = event => {
-
+        fetch(process.env.REACT_APP_BASE_URL+'/live/delete',{
+            method: 'DELETE',
+            headers: {
+                "profileAuthToken" : user.token
+            },
+            body: JSON.stringify({id: data.id})
+        }).then(r=>r.json()).then(r=> {
+            if(r.success){
+                history.goBack();
+            }
+        });
     }
     return (
         <div className="container">
@@ -68,13 +81,13 @@ const UpdateLive = () => {
                 <div className="card-body">
                     <div className="row d-flex align-items-end">
                         <div className="col-md-2 mb-3">
-                            <img className="img img-thumbnail" src={data.image} alt=""/>
+                            <img ref={displayRef} className="img img-thumbnail" src={data.image} alt=""/>
                         </div>
                         <div className="col-md-8 mb-3">
-                            <input ref={imageRef} type="file" className="form-control"/>
+                            <input ref={imageRef} onChange={handleSelect} type="file" className="form-control"/>
                         </div>
                         <div className="col-md-2 mb-3">
-                            <select className="form-control" onChange={setEnable} defaultValue={Number.parseInt(enable)}>
+                            <select className="form-control" onChange={handleEnable} value={enabled}>
                                 <option className="form-control" value={1} >Enable</option>
                                 <option className="form-control" value={0} >Disable</option>
                             </select>

@@ -1,17 +1,21 @@
 import React, {useContext, useRef} from 'react';
 import {random} from "../../../Helper/helper";
-import profile from "../../../Assets/Images/profile.jpg";
+import dummyImage from "../../../Assets/Images/dummy_1.png";
 import {UserContext} from "../../../App";
 import {useHistory} from "react-router-dom/cjs/react-router-dom";
 
 const CreateLive = () => {
     const [user] = useContext(UserContext);
     const history = useHistory();
+    const displayRef = useRef(null);
     const imageRef = useRef(null);
     const keyRef = useRef(null);
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
     let enable = 1;
+    const handleSelect = event => {
+        displayRef.current.src = URL.createObjectURL(event.target.files[0]);
+    }
     const handleKey = () => {
         keyRef.current.value = random(32);
     }
@@ -54,10 +58,10 @@ const CreateLive = () => {
                 <div className="card-body">
                     <div className="row d-flex align-items-end">
                         <div className="col-md-2 mb-3">
-                            <img className="img img-thumbnail" src={profile} alt=""/>
+                            <img ref={displayRef} className="img img-thumbnail" src={dummyImage} alt=""/>
                         </div>
                         <div className="col-md-8 mb-3">
-                            <input ref={imageRef} type="file" className="form-control"/>
+                            <input ref={imageRef} onChange={handleSelect} type="file" className="form-control"/>
                         </div>
                         <div className="col-md-2 mb-3">
                             <select className="form-control" onChange={setEnable}>

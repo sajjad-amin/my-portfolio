@@ -7,7 +7,6 @@ const LiveCard = (props) => {
         <div className="col-md-4 mb-4 article-card">
             <div className="card bg-a">
                 {image && <img src={image} className="card-img-top" alt={title}/>}
-                {console.log(show)}
                 <div className="card-body">
                     <h5 className="card-title">{title} {Number.parseInt(show) ? <span className="badge bg-success">Enable</span> : <span className="badge bg-secondary">Disable</span>}</h5>
                     <p className="card-text fs-6">{description}</p>

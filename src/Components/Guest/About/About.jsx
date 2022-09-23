@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfilePicture from "../../../Assets/Images/profile.jpg";
+import ProfilePicture from "../../../Assets/Images/profile.png";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDownload, faEnvelope, faMapMarkerAlt, faPhoneAlt} from "@fortawesome/free-solid-svg-icons";
 import {faFacebook, faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
@@ -12,7 +12,7 @@ const About = () => {
                 <Fade left>
                     <div className="col-md-6 p-5">
                         <div className="col-md-8 mt-5">
-                            <img className="rounded-3 img-thumbnail img-fluid" src={ProfilePicture} alt="Sajjad Amin"/>
+                            <img className="rounded-3 img-fluid" src={ProfilePicture} alt="Sajjad Amin"/>
                         </div>
                         <h1 className="mt-3 mb-3">Sajjad Amin</h1>
                         <p className="led">

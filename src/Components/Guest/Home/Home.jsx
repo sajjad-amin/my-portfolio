@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfilePicture from '../../../Assets/Images/profile.jpg'
+import ProfilePicture from '../../../Assets/Images/profile.png'
 import ProjectData from "../../../Data/ProjectData";
 import HomeProjectCard from "./HomeProjectCard";
 import BlogData from "../../../Data/BlogData";
@@ -16,7 +16,7 @@ const Home = () => {
           <section className="row">
               <Roll left>
                   <div className="col-md-6 p-5">
-                      <img className="rounded-3 img-thumbnail img-fluid" src={ProfilePicture} alt="Sajjad Amin"/>
+                      <img className="rounded-3 img-fluid" src={ProfilePicture} alt="Sajjad Amin"/>
                   </div>
               </Roll>
               <Roll right>
@@ -43,10 +43,10 @@ const Home = () => {
                               <a className="color-a" href="https://facebook.com/sajjad.amin.100" target="_blank">
                                   <FontAwesomeIcon icon={faFacebook}/>
                               </a>
-                              <a className="color-a" href="src/Components/Guest/Home/Home" target="_blank">
+                              <a className="color-a" href="https://www.linkedin.com/in/sajjadaminsayem/" target="_blank">
                                   <FontAwesomeIcon icon={faLinkedin}/>
                               </a>
-                              <a className="color-a" href="src/Components/Guest/Home/Home" target="_blank">
+                              <a className="color-a" href="https://github.com/sajjad-amin" target="_blank">
                                   <FontAwesomeIcon icon={faGithub}/>
                               </a>
                           </div>
