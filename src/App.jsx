@@ -15,7 +15,8 @@ import Particles from "react-particles-js";
 import ParticleConfig from "./Data/ParticleConfig";
 import Live from "./Components/Guest/Live/Live";
 import Dashboard from "./Components/Admin/Dashboard/Dashboard";
-import {getLoggedInData} from "./Helper/Auth";
+import {getLoggedInData} from "./Helper/auth";
+import LivePlayer from "./Components/Guest/Live/LivePlayer";
 
 export const UserContext = createContext();
 const App = () => {
@@ -41,8 +42,11 @@ const App = () => {
                     <Route path="/blog">
                         <Blog/>
                     </Route>
-                    <Route path="/live">
+                    <Route exact path="/live">
                         <Live/>
+                    </Route>
+                    <Route path="/live/:id">
+                        <LivePlayer/>
                     </Route>
                     <Route path="/contact">
                         <Contact/>

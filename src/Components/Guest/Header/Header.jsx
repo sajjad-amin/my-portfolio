@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import {clearLoggedInData, isUserLoggedIn} from "../../../Helper/Auth";
+import {clearLoggedInData, isUserLoggedIn} from "../../../Helper/auth";
 import {UserContext} from "../../../App";
-import {sendRequest} from "../../../Helper/Http";
+import {sendRequest} from "../../../Helper/http";
 const Header = () => {
     const [user,setUser] = useContext(UserContext);
     const location = useLocation()

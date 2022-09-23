@@ -85,7 +85,7 @@ body{
     background-color: #a94a4a !important;
     color: #fff !important;
 }
-input, textarea{
+input, textarea, option, select{
     background-color: #30003c !important;
     border-color: #e38d8d !important;
     color: #fff !important;

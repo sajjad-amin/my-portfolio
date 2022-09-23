@@ -2,11 +2,13 @@ import React, {useContext, useEffect, useRef} from 'react';
 import 'react-pro-sidebar/dist/css/styles.css';
 import {useRouteMatch, Link, Switch, Route, NavLink} from "react-router-dom";
 import Blog from "../../Guest/Blog/Blog";
-import Live from "../../Guest/Live/Live";
 import Projects from "../../Guest/Projects/Projects";
 import Login from "../Login/Login";
 import {UserContext} from "../../../App";
-import {isUserLoggedIn} from "../../../Helper/Auth";
+import {isUserLoggedIn} from "../../../Helper/auth";
+import Live from "../Lives/Live";
+import UpdateLive from "../Lives/UpdateLive";
+import CreateLive from "../Lives/CreateLive";
 
 const Dashboard = () => {
     const [user] = useContext(UserContext);
@@ -46,8 +48,14 @@ const Dashboard = () => {
                                 <Switch>
                                     <Route exact path={url}>
                                     </Route>
-                                    <Route path={`${url}/live`}>
+                                    <Route exact path={`${url}/live`}>
                                         <Live/>
+                                    </Route>
+                                    <Route path={`${url}/live/create`}>
+                                        <CreateLive/>
+                                    </Route>
+                                    <Route path={`${url}/live/:id`}>
+                                        <UpdateLive/>
                                     </Route>
                                     <Route path={`${url}/project`}>
                                         <Projects/>

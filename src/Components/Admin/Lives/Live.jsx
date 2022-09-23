@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import LiveCard from "./LiveCard";
+import {Link, useRouteMatch} from "react-router-dom";
 
 const Live = () => {
     const [data, setData] = useState({});
+    const {url} = useRouteMatch();
     useEffect(()=>{
         fetch(process.env.REACT_APP_BASE_URL+'/live').then(r=>r.json()).then(d=>setData(d));
     },[]);
@@ -10,14 +12,17 @@ const Live = () => {
         <div className="container">
             <h1 className="color-a">Lives</h1>
             <hr/>
+            <Link to={`${url}/create`}>
+                <button className="btn btn-b">Create +</button>
+            </Link>
             <section className="row mt-5 mb-5">
                 {
-                    data.length > 0 ? Object.keys(data).map((key)=>(
-                        Number.parseInt(data[key].show) ? <LiveCard
+                    Object.keys(data).map((key)=>(
+                        <LiveCard
                             key={data[key].key}
                             data={data[key]}
-                        /> : ''
-                    )) : <h3 className="text-center">No live available right now</h3>
+                        />
+                    ))
                 }
             </section>
         </div>

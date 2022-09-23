@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import {setLoggedInData} from "../../../Helper/Auth";
-import {sendRequest} from "../../../Helper/Http";
+import {setLoggedInData} from "../../../Helper/auth";
+import {sendRequest} from "../../../Helper/http";
 import {UserContext} from "../../../App";
 
 const Login = () => {

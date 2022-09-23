@@ -14,7 +14,7 @@ export const clearLoggedInData = () => {
 }
 export const isUserLoggedIn = (user) =>{
     let loggedIn = false;
-    if(user && user.expire > Number.parseInt(Date.now()/1000)){
+    if(user && user.expire > Number.parseInt(Date.now()/1000) && user.token){
         loggedIn = true;
     }
     return loggedIn;
