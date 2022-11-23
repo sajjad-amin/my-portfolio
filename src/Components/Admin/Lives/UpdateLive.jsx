@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
+import axios from "axios";
 import {useParams} from "react-router-dom";
 import {random} from "../../../Helper/helper";
 import {UserContext} from "../../../App";
@@ -13,12 +14,13 @@ const UpdateLive = () => {
     const displayRef = useRef(null);
     const imageRef = useRef(null);
     const keyRef = useRef(null);
+    const linkRef = useRef(null);
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_BASE_URL}/live/${id}`).then(r=>r.json()).then(d=> {
-            setData(d[0]);
-            setEnabled(Number.parseInt(d[0].show));
+        axios.get(`${process.env.REACT_APP_BASE_URL}/live/${id}`).then(r=>{
+            setData(r.data[0]);
+            setEnabled(Number.parseInt(r.data[0].show));
         });
     },[]);
     const handleEnable = event => {
@@ -45,29 +47,27 @@ const UpdateLive = () => {
             }
             requestBody.append('imagePath', data.image);
             requestBody.append('key', key);
+            requestBody.append('link', linkRef.current.value);
             requestBody.append('show', enabled);
-            fetch(process.env.REACT_APP_BASE_URL+'/live/update',{
-                method: 'POST',
+            axios.post(`${process.env.REACT_APP_BASE_URL}/live/update`,requestBody,{
                 headers: {
                     "profileAuthToken" : user.token
-                },
-                body: requestBody
-            }).then(r=>r.json()).then(r=> {
-                if(r.success){
+                }
+            }).then(r=>{
+                if(r.data.success){
                     history.goBack();
                 }
             });
         }
     }
     const handleDelete = event => {
-        fetch(process.env.REACT_APP_BASE_URL+'/live/delete',{
-            method: 'DELETE',
+        axios.delete(`${process.env.REACT_APP_BASE_URL}/live/delete`,{
             headers: {
                 "profileAuthToken" : user.token
             },
-            body: JSON.stringify({id: data.id})
-        }).then(r=>r.json()).then(r=> {
-            if(r.success){
+            data: {id: data.id}
+        }).then(r=>{
+            if(r.data.success){
                 history.goBack();
             }
         });
@@ -100,6 +100,9 @@ const UpdateLive = () => {
                         <div className="col-md-2 mb-3">
                             <button className="btn btn-b float-end" onClick={handleKey}>Generate</button>
                         </div>
+                    </div>
+                    <div className="mb-3">
+                        <input ref={linkRef} type="url" className="form-control" placeholder="Link" defaultValue={data.link}/>
                     </div>
                     <div className="mb-3">
                         <input ref={titleRef} type="text" className="form-control" placeholder="Title" defaultValue={data.title}/>

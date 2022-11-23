@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import LiveCard from "./LiveCard";
+import axios from "axios";
 
 const Live = () => {
     const [data, setData] = useState({});
     useEffect(()=>{
-        fetch(process.env.REACT_APP_BASE_URL+'/live').then(r=>r.json()).then(d=>setData(d));
+        axios.get(process.env.REACT_APP_BASE_URL+'/live').then(r=>setData(r.data));
     },[]);
     return (
         <div className="container">

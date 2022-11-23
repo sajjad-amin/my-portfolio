@@ -1,4 +1,5 @@
 import React, {useContext, useRef} from 'react';
+import axios from "axios";
 import {random} from "../../../Helper/helper";
 import dummyImage from "../../../Assets/Images/dummy_1.png";
 import {UserContext} from "../../../App";
@@ -10,6 +11,7 @@ const CreateLive = () => {
     const displayRef = useRef(null);
     const imageRef = useRef(null);
     const keyRef = useRef(null);
+    const linkRef = useRef(null);
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
     let enable = 1;
@@ -25,6 +27,7 @@ const CreateLive = () => {
     const handleSubmit = () => {
         const image = imageRef.current.files[0];
         const key = keyRef.current.value;
+        const link = linkRef.current.value;
         const title = titleRef.current.value;
         const description = descriptionRef.current.value;
         if(key !== '' && title !== '' && description !== ''){
@@ -35,15 +38,14 @@ const CreateLive = () => {
                 requestBody.append('image', image);
             }
             requestBody.append('key', key);
+            requestBody.append('link', link);
             requestBody.append('show', enable);
-            fetch(process.env.REACT_APP_BASE_URL+'/live/create',{
-                method: 'POST',
+            axios.post(`${process.env.REACT_APP_BASE_URL}/live/create`, requestBody, {
                 headers: {
                     "profileAuthToken" : user.token
-                },
-                body: requestBody
-            }).then(r=>r.json()).then(r=> {
-                if(r.success){
+                }
+            }).then(r=>{
+                if(r.data.success){
                     history.goBack();
                 }
             });
@@ -77,6 +79,9 @@ const CreateLive = () => {
                         <div className="col-md-2 mb-3">
                             <button className="btn btn-b float-end" onClick={handleKey}>Generate</button>
                         </div>
+                    </div>
+                    <div className="mb-3">
+                        <input ref={linkRef} type="url" className="form-control" placeholder="Link"/>
                     </div>
                     <div className="mb-3">
                         <input ref={titleRef} type="text" className="form-control" placeholder="Title"/>
